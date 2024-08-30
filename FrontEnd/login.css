@@ -92,10 +92,18 @@ a:hover {
 	color: #B1663C;
 }
 
-h2{
+.login {
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
-	color: #1D6154
-    : center;
+	line-height: 36px;
+	color: #1D6154;
+	align-items: center;
 }
+
+.login > span {
+	font-family: 'Work Sans';
+	font-size: 10px;
+	letter-spacing: 0.1em;
+}
+
