@@ -99,39 +99,17 @@ async function displayWorks() {
   });
 }
 
-const form = document.getElementById("login-form");
 
-    form.addEventListener("submit", function (event) {
-      event.preventDefault(); // Empêche le formulaire de se soumettre
 
-      // Récupère les valeurs des champs email et mot de passe
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
 
-      // Envoyez les valeurs à votre API backend pour vérification
-      // Vous pouvez utiliser une bibliothèque comme Axios ou la fonction fetch pour cela
-
-      // Exemple d'utilisation de la fonction fetch pour envoyer les informations à l'API
-      fetch("https://votre-api.com/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      })
-        .then((response) => {
-          if (response.ok) {
-            // Authentification réussie, redirigez vers la page d'administration
-            window.location.href = "page-admin.html";
-          } else {
-            // Affichez un message d'erreur si les identifiants sont invalides
-            alert("Identifiants invalides. Veuillez réessayer.");
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    });
-
+document.addEventListener("DOMContentLoaded", async function () {
+  const authToken = localStorage.getItem("authToken");
+  if (authToken) {
+    console.log(authToken)
+    const portfolioEdit=document.getElementById("portfolio-edit");
+    portfolioEdit.style.display="block";
+  }
 displayCategories();
 displayWorks();
+});
+  

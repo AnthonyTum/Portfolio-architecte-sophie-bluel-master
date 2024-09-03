@@ -1,11 +1,12 @@
 document.getElementById('login-form').addEventListener('submit', async function(event) {
     event.preventDefault(); // Empêche l'envoi du formulaire par défaut
     
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    console.log(email, password);
 
     try {
-        const response = await fetch('http://localhost:5678/api-docs', { // Remplacez par votre véritable point d'accès API
+        const response = await fetch('http://localhost:5678/api/users/login', { // Remplacez par votre véritable point d'accès API
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -29,3 +30,8 @@ document.getElementById('login-form').addEventListener('submit', async function(
         alert('Email ou mot de passe incorrect');
     }
 });
+    const authToken = localStorage.getItem('authToken');
+    if (authToken) {
+        // Redirection vers la page de connexion si l'utilisateur n'est pas connecté
+        window.location.href = 'index.html';
+    }

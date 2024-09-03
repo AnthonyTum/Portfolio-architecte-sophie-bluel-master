@@ -97,18 +97,14 @@ a:hover {
 }
 
 .login {
+	width: 100px;
+	height: 36px;
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
 	line-height: 36px;
 	color: #1D6154;
 	align-items: center;
-}
-
-.login > span {
-	font-family: 'Work Sans';
-	font-size: 10px;
-	letter-spacing: 0.1em;
 }
 
 #login-form div {
@@ -123,9 +119,10 @@ label {
 }
 
 input[type="email"], input[type="password"] {
-    width: 100%;
-    padding: 15px;
-    font-size: 20px;
+    width: 379px;
+    height: 51px;
+    top: 338px;
+	left: 530px;
     border: 1px solid #CCCCCC;
     border-radius: 5px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
