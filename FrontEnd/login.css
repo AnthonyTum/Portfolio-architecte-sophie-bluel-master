@@ -75,24 +75,13 @@ h1 > span {
 ;
 }
 
-h1.login {
-    text-align: center;
-    font-family: 'Syne', sans-serif;
-    font-size: 24px;
-    color: #1D6154;
-    margin-bottom: 20px;
-}
-
-#login-form div {
-    margin-bottom: 20px;
-}
-
 nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
 
 }
+
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
@@ -105,7 +94,6 @@ li:hover {
 
 a:hover {
 	color: #B1663C;
-	text-decoration: underline;
 }
 
 .login {
@@ -136,33 +124,26 @@ label {
 
 input[type="email"], input[type="password"] {
     width: 100%;
-    padding: 10px;
-    font-size: 14px;
+    padding: 15px;
+    font-size: 20px;
     border: 1px solid #CCCCCC;
     border-radius: 5px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
 }
 
 button[type="submit"] {
-    width: 100%;
+    width: 179px;
+	height: 36px;
     padding: 10px;
     background-color: #1D6154;
     color: #FFFFFF;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     font-size: 16px;
     cursor: pointer;
 }
 
 button[type="submit"]:hover {
     background-color: #145D43;
-}
-
-a {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-    font-size: 12px;
-    color: #1D6154;
-    text-decoration: none;
 }
