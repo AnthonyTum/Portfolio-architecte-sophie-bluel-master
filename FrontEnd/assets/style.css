@@ -47,6 +47,28 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
+
+#edit-mode {
+	display: none;
+	background-color: black;
+	color: white;
+	padding: 10px 20px;
+	border-radius: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	text-align: center;
+	z-index: 1000;
+  }
+  
+  #edit-mode.active {
+	display: block;
+  }
+  
+  #edit-mode i {
+	margin-right: 10px;
+  }
+
 body {
 	max-width: 1140px;
 	margin:auto;
@@ -95,6 +117,56 @@ nav li {
 	font-size: 1.2em;
 }
 
+.login {
+	width: 100px;
+	height: 36px;
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 30px;
+	line-height: 36px;
+	color: #1D6154;
+	align-items: center;
+}
+
+#login-form div {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333333;
+}
+
+input[type="email"], input[type="password"] {
+    width: 379px;
+    height: 51px;
+    top: 338px;
+	left: 530px;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    width: 179px;
+	height: 36px;
+    padding: 10px;
+    background-color: #1D6154;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #145D43;
+}
+
+
 li:hover {
 	color: #B1663C;
 }
@@ -131,13 +203,23 @@ li:hover {
 }
 
 #portfolio-edit {
-	display:none;
+	display: none;
+	color: #1D6154;
+	font-weight: 700;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	font-size: 16px;
 }
 
 #portfolio-edit.active {
-	display:block;
+	display:inline-block;
 }
 
+#portfolio-edit i {
+	margin-right: 5px;
+	font-size: 18px;
+  }
 #portfolio h2 {
 	text-align: center;
 }
