@@ -99,16 +99,25 @@ async function displayWorks() {
   });
 }
 
-
-
-
 document.addEventListener("DOMContentLoaded", async function () {
+  // Récupère le token d'authentification
   const authToken = localStorage.getItem("authToken");
+
+  // Si l'utilisateur est connecté, affiche la barre de mode édition et le bouton "Modifier"
   if (authToken) {
-    console.log(authToken)
-    const portfolioEdit=document.getElementById("portfolio-edit");
-    portfolioEdit.style.display="block";
+    const editMode = document.getElementById("edit-mode");
+    const portfolioEdit = document.getElementById("portfolio-edit");
+
+    // Affiche la barre de mode édition
+    editMode.classList.add("active");
+
+    // Affiche le bouton "Modifier" des projets
+    portfolioEdit.classList.add("active");
   }
+
+
+
+
 displayCategories();
 displayWorks();
 });

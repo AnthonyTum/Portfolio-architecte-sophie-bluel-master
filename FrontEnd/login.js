@@ -6,7 +6,7 @@ document.getElementById('login-form').addEventListener('submit', async function(
     console.log(email, password);
 
     try {
-        const response = await fetch('http://localhost:5678/api/users/login', { // Remplacez par votre véritable point d'accès API
+        const response = await fetch('http://localhost:5678/api/users/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
