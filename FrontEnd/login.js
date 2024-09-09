@@ -1,9 +1,9 @@
+// index.js
 document.getElementById('login-form').addEventListener('submit', async function(event) {
     event.preventDefault(); // Empêche l'envoi du formulaire par défaut
     
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    console.log(email, password);
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
     try {
         const response = await fetch('http://localhost:5678/api/users/login', {
@@ -23,15 +23,39 @@ document.getElementById('login-form').addEventListener('submit', async function(
         // Supposons que la réponse contient un token
         localStorage.setItem('authToken', data.token);
 
+        // Indique que l'utilisateur est connecté
+        localStorage.setItem('isLoggedIn', 'true');
+
         // Redirection vers la page d'accueil après une connexion réussie
-        window.location.href = 'index.html'; // Remplacez par votre véritable page d'accueil
+        window.location.href = 'index.html';
 
     } catch (error) {
         alert('Email ou mot de passe incorrect');
     }
 });
-    const authToken = localStorage.getItem('authToken');
-    if (authToken) {
-        // Redirection vers la page de connexion si l'utilisateur n'est pas connecté
-        window.location.href = 'index.html';
+
+window.onload = function() {
+    // Vérifier si l'utilisateur est connecté
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    
+    // Sélectionner le lien dans la barre de navigation
+    const loginLink = document.querySelector('nav li a[href="login.html"]');
+    
+    if (isLoggedIn === 'true') {
+        // Si l'utilisateur est connecté, afficher "Log out" sur la page d'accueil
+        loginLink.textContent = 'Log out';
+        loginLink.setAttribute('href', '#'); // Empêche de rediriger vers la page de connexion
+        
+        // Gestion de la déconnexion lorsque "Log out" est cliqué
+        loginLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            // Déconnexion : supprimer les informations du localStorage
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('isLoggedIn');
+            
+            // Redirection vers la page de connexion après déconnexion
+            window.location.href = 'login.html';
+        });
     }
+};
