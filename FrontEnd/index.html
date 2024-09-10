@@ -16,18 +16,35 @@
   </head>
   <body>
     <header>
-      <a id="edit-mode"><i class="fa-regular fa-pen-to-square"></i> Mode édition</a>
+      <div id="edit-mode"><i class="fa-regular fa-pen-to-square"></i> Mode édition</div>
       <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
       <nav>
         <ul>
           <li>projets</li>
           <li>contact</li>
-          <li><a href="login.html">login</a></li>
+          <li><a id="login-link" href="login.html">login</a></li>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
     </header>
     <main>
+      <div id="gallery">
+        <div id="gallery-modal">
+          <div id="gallery-modal-header">
+            <h1>Galerie photo</h1>
+            <button><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <div id="gallery-pictures">
+            <div>
+              <button><i class="fa-solid fa-trash"></i></button>
+              <img src="./assets/images/abajour-tahina.png" alt="photo"/>
+            </div>
+          </div>
+          <hr/>
+          <button>Ajouter une photo</button>
+        </div>
+
+      </div>
       <section id="introduction">
         <figure>
           <img src="./assets/images/sophie-bluel.png" alt="" />

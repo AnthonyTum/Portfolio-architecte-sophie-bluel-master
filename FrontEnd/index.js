@@ -105,6 +105,16 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   // Si l'utilisateur est connecté, affiche la barre de mode édition et le bouton "Modifier"
   if (authToken) {
+    const loginLink = document.getElementById("login-link");
+    loginLink.textContent = "Log out";
+    loginLink.addEventListener("click", function (event) {
+      event.preventDefault();
+
+    // Déconnexion : supprimer les informations du localStorage
+    localStorage.removeItem("authToken");
+    loginLink.textContent = "Log in";
+    });
+    console.log("Utilisateur connecté");
     const editMode = document.getElementById("edit-mode");
     const portfolioEdit = document.getElementById("portfolio-edit");
 
@@ -114,7 +124,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Affiche le bouton "Modifier" des projets
     portfolioEdit.classList.add("active");
   }
-
 
 
 

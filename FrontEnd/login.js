@@ -23,9 +23,6 @@ document.getElementById('login-form').addEventListener('submit', async function(
         // Supposons que la réponse contient un token
         localStorage.setItem('authToken', data.token);
 
-        // Indique que l'utilisateur est connecté
-        localStorage.setItem('isLoggedIn', 'true');
-
         // Redirection vers la page d'accueil après une connexion réussie
         window.location.href = 'index.html';
 
@@ -34,28 +31,15 @@ document.getElementById('login-form').addEventListener('submit', async function(
     }
 });
 
-window.onload = function() {
-    // Vérifier si l'utilisateur est connecté
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    
-    // Sélectionner le lien dans la barre de navigation
-    const loginLink = document.querySelector('nav li a[href="login.html"]');
-    
-    if (isLoggedIn === 'true') {
-        // Si l'utilisateur est connecté, afficher "Log out" sur la page d'accueil
-        loginLink.textContent = 'Log out';
-        loginLink.setAttribute('href', '#'); // Empêche de rediriger vers la page de connexion
-        
-        // Gestion de la déconnexion lorsque "Log out" est cliqué
-        loginLink.addEventListener('click', function(event) {
-            event.preventDefault();
-            
-            // Déconnexion : supprimer les informations du localStorage
-            localStorage.removeItem('authToken');
-            localStorage.removeItem('isLoggedIn');
-            
-            // Redirection vers la page de connexion après déconnexion
-            window.location.href = 'login.html';
-        });
+document.addEventListener("DOMContentLoaded", async function () {
+    // Récupère le token d'authentification
+    const authToken = localStorage.getItem("authToken");
+  
+    // Si l'utilisateur est connecté, affiche la barre de mode édition et le bouton "Modifier"
+    if (authToken) {
+        window.location.href = 'index.html';
     }
-};
+  
+  
+  
+  });
