@@ -307,32 +307,87 @@ footer nav ul {
 /* Gallery */
 
 #gallery {
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background-color: rgba(0, 0, 0, 0.8);
-	z-index: 999;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
 }
 
 #gallery-modal {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	background-color: white	;
-	border-radius: 10px;
-	padding: 20px;
+    position: absolute;
+	width: 630px;
+	height: 688px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
 }
 
 #gallery-modal-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #gallery-modal-header h1 {
+    margin: 0 auto;
+}
+
+#gallery-pictures {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#gallery-pictures div {
+	top: 50px;
+    position: relative;
+}
+
+#gallery-pictures img {
+	width: 76.86px;
+    height: 102.57px;
+}
+
+.delete-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 1.0);
+    border: none;
+    color: white;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.delete-button i {
+    pointer-events: none;
+}
+
+.add-photo-button {
+    background-color: #2b7a78;
+    color: white;
+    width: 237px;
+	height: 36px;
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+	display: block;
 	margin: 0 auto;
+}
+
+.add-photo-button:hover {
+    background-color: #3aafa9;
+	left: 600px;
+}
+
+hr {
+    border: 1px solid #B3B3B3;
+    margin: 150px 100px;
 }
