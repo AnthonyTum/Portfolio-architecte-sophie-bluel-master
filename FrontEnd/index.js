@@ -98,7 +98,7 @@ async function displayWorks() {
     galleryContainer.appendChild(figure);
   });
 }
-
+const portfolioEdit = document.getElementById("portfolio-edit");
 document.addEventListener("DOMContentLoaded", async function () {
   // Récupère le token d'authentification
   const authToken = localStorage.getItem("authToken");
@@ -110,24 +110,87 @@ document.addEventListener("DOMContentLoaded", async function () {
     loginLink.addEventListener("click", function (event) {
       event.preventDefault();
 
-    // Déconnexion : supprimer les informations du localStorage
-    localStorage.removeItem("authToken");
-    loginLink.textContent = "Log in";
+      // Déconnexion : supprimer les informations du localStorage
+      localStorage.removeItem("authToken");
+      window.location.href = 'index.html';
+      loginLink.textContent = "Log in";
     });
     console.log("Utilisateur connecté");
     const editMode = document.getElementById("edit-mode");
-    const portfolioEdit = document.getElementById("portfolio-edit");
 
     // Affiche la barre de mode édition
     editMode.classList.add("active");
 
     // Affiche le bouton "Modifier" des projets
     portfolioEdit.classList.add("active");
+    portfolioEdit.addEventListener("click", function (event) {
+      event.preventDefault();
+      openGalleryModal();
+    });
   }
 
+  async function deleteWork(workId) {
+    console.log(authToken);
+    try {
+      const response = await fetch(
+        `http://localhost:5678/api/works/${workId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
 
+      if (response.ok) {
+        console.log("Work deleted successfully");
+        // Mettre à jour la galerie après la suppression
+        updateWorks();
+      } else {
+        console.error("Failed to delete work");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
 
-displayCategories();
-displayWorks();
+  async function openGalleryModal() {
+    const modal = document.getElementById("gallery");
+    const closeButton = document.getElementById("gallery-close");
+    modal.classList.add("active");
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        modal.classList.remove("active");
+      }
+    });
+    closeButton.addEventListener("click", function () {
+      modal.classList.remove("active");
+    });
+    const works = await getWorks();
+    const galleryPictures = document.getElementById("gallery-pictures");
+    for (const work of works) {
+      const divElement = document.createElement("div");
+      const imgElement = document.createElement("img");
+      imgElement.src = work.imageUrl;
+      imgElement.alt = work.title;
+      const deleteButton = document.createElement("button");
+      deleteButton.className = "gallery-delete";
+      deleteButton.addEventListener("click", function () {
+        deleteWork(work.id);
+        divElement.remove();
+      });
+
+      const deleteIcon = document.createElement("i");
+      deleteIcon.className = "fa-solid fa-trash-can";
+
+      deleteButton.appendChild(deleteIcon);
+      divElement.appendChild(imgElement);
+      divElement.appendChild(deleteButton);
+      galleryPictures.appendChild(divElement);
+    }
+  }
+
+  displayCategories();
+  displayWorks();
 });
-  

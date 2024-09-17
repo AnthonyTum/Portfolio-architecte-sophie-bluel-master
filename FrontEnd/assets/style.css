@@ -302,6 +302,7 @@ footer nav ul {
 /* Gallery */
 
 #gallery {
+	display: none;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -309,6 +310,10 @@ footer nav ul {
     right: 0;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 999;
+}
+
+#gallery.active {
+	display: block;
 }
 
 #gallery-modal {
@@ -341,28 +346,37 @@ footer nav ul {
 }
 
 #gallery-pictures div {
-	top: 50px;
     position: relative;
+	display: inline-block;
 }
 
 #gallery-pictures img {
 	width: 76.86px;
     height: 102.57px;
+	display: block;
+	object-fit: cover;
 }
 
 .delete-button {
     position: absolute;
     top: 5px;
-    right: 10px;
-    background-color: rgba(0, 0, 0, 1.0);
+   	left: 52px;
+    background-color: rgba(0, 0, 0, 0.8);
     border: none;
     color: white;
     border-radius: 2px;
     cursor: pointer;
+	width: 20px;
+	height: 20px;
+	padding: 3px;
 }
 
 .delete-button i {
     pointer-events: none;
+	width: 9px;
+	height: 11px;
+	justify-content: center;
+	align-items: center;
 }
 
 .add-photo-button {
