@@ -169,11 +169,15 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
     const works = await getWorks();
     const galleryPictures = document.getElementById("gallery-pictures");
+
+    galleryPictures.innerHTML = "";
+
     for (const work of works) {
       const divElement = document.createElement("div");
       const imgElement = document.createElement("img");
       imgElement.src = work.imageUrl;
       imgElement.alt = work.title;
+
       const deleteButton = document.createElement("button");
       deleteButton.className = "gallery-delete";
       deleteButton.addEventListener("click", function () {
