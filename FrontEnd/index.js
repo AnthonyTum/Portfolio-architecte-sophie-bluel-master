@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Si l'utilisateur est connecté, affiche la barre de mode édition et le bouton "Modifier"
   if (authToken) {
     const loginLink = document.getElementById("login-link");
-    loginLink.textContent = "Log out";
+    loginLink.textContent = "Logout";
     loginLink.addEventListener("click", function (event) {
       event.preventDefault();
 

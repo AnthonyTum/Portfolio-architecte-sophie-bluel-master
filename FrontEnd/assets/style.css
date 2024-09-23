@@ -1,3 +1,8 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -107,58 +112,72 @@ nav ul {
 	list-style-type: none;
 
 }
-nav li {
-	padding: 0 10px;
-	font-size: 1.2em;
+
+#login-link {
+	font-size: bold;
 }
 
 .login {
 	width: 100px;
 	height: 36px;
 	font-family: 'Syne';
-	font-weight: 700;
 	font-size: 30px;
 	line-height: 36px;
 	color: #1D6154;
 	align-items: center;
+	margin-left: 45%;
+	margin-top: 20%;
 }
 
 #login-form div {
     display: flex;
+	margin: 15px 0;
     flex-direction: column;
     align-items: center;
 }
 
 label {
-    font-family: 'Syne';
     margin-bottom: 5px;
+	margin-right: 20%;
+	font-weight: 500;
     font-size: 14px;
+	line-height: 16.42px;
     color: #333333;
 }
 
 input[type="email"], input[type="password"] {
     width: 300px;
-	  height: 40px;
-	  box-shadow: 0px 0px 15px rgba(244,243,237,255);
-	  border-width: 0px;
+	height: 40px;
+	box-shadow: 0px 0px 15px rgba(244,243,237,255);
+	border-width: 0px;
 }
 
 button[type="submit"] {
     font-family: 'Syne';
-	font-size: 0.9em;
 	color: white;
 	background-color: #1D6154;
 	border-width: 0px;
-	text-align: center;
 	border-radius: 60px ;
 	padding: 7px 25px 7px 25px;
 	width: 150px;
 	margin-top: 30px;
+	margin-left: 43%;
 	cursor: pointer;
 }
 
 button[type="submit"]:hover {
     background-color: #145D43;
+}
+
+.mentions {
+	display: flex;
+	justify-content: center;
+	margin-top: 630px;
+}
+
+nav li {
+	padding: 0 10px;
+	font-size: 1.2em;
 }
 
 
@@ -339,6 +358,7 @@ footer nav ul {
 }
 
 #gallery-pictures {
+	margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
@@ -353,11 +373,10 @@ footer nav ul {
 #gallery-pictures img {
 	width: 76.86px;
     height: 102.57px;
-	display: block;
 	object-fit: cover;
 }
 
-.delete-button {
+.gallery-delete {
     position: absolute;
     top: 5px;
    	left: 52px;
@@ -371,7 +390,7 @@ footer nav ul {
 	padding: 3px;
 }
 
-.delete-button i {
+.gallery-delete i {
     pointer-events: none;
 	width: 9px;
 	height: 11px;
@@ -398,5 +417,7 @@ footer nav ul {
 
 hr {
     border: 1px solid #B3B3B3;
-    margin: 150px 100px;
+	width: 420px;
+    margin-top: 320px;
+	margin-bottom: 40px;
 }
