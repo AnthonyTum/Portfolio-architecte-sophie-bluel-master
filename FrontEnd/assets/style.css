@@ -357,9 +357,18 @@ footer nav ul {
     margin: 0 auto;
 }
 
+#gallery-title {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+	color: rgba(0, 0, 0, 1);
+}
+
 #gallery-pictures {
 	margin-top: 30px;
+	margin: 90px;
     display: grid;
+	float: left;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     margin-bottom: 20px;
@@ -374,6 +383,19 @@ footer nav ul {
 	width: 76.86px;
     height: 102.57px;
 	object-fit: cover;
+}
+
+#gallery-close {
+    background-color: transparent;
+    border: none;
+    color: black;
+    cursor: pointer;
+}
+
+#gallery-close  i {
+	margin-top: 8px;
+	margin-right: 10px;
+    font-size: 24px;
 }
 
 .gallery-delete {
@@ -418,6 +440,6 @@ footer nav ul {
 hr {
     border: 1px solid #B3B3B3;
 	width: 420px;
-    margin-top: 320px;
+    margin-top: 560px;
 	margin-bottom: 40px;
 }

@@ -1,10 +1,13 @@
 "use strict";
 
 const galleryContainer = document.querySelector(".gallery");
-
 const categoriesContainer = document.querySelector(".categories");
+const portfolioEdit = document.getElementById("portfolio-edit");
 
 let currentCategory = "Tous";
+
+// Récupère le token d'authentification
+const authToken = localStorage.getItem("authToken");
 
 async function getCategories() {
   return await fetch("http://localhost:5678/api/categories")
@@ -98,11 +101,67 @@ async function displayWorks() {
     galleryContainer.appendChild(figure);
   });
 }
-const portfolioEdit = document.getElementById("portfolio-edit");
-document.addEventListener("DOMContentLoaded", async function () {
-  // Récupère le token d'authentification
-  const authToken = localStorage.getItem("authToken");
+async function deleteWork(workId) {
+  const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authToken}`,
+    },
+  });
+}
 
+async function openGalleryModal() {
+  console.log(authToken);
+  const modal = document.getElementById("gallery");
+  const closeButton = document.getElementById("gallery-close");
+  modal.classList.add("active");
+  modal.addEventListener("click", function (event) {
+    if (event.target === modal) {
+      modal.classList.remove("active");
+    }
+  });
+  closeButton.addEventListener("click", function () {
+    modal.classList.remove("active");
+  });
+
+  const works = await getWorks();
+  const galleryPictures = document.getElementById("gallery-pictures");
+
+  for (const work of works) {
+    const divElement = document.createElement("div");
+    const imgElement = document.createElement("img");
+    imgElement.src = work.imageUrl;
+    imgElement.alt = work.title;
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "gallery-delete";
+    deleteButton.type = "button";
+    deleteButton.addEventListener("click", async (e) => {
+      e.preventDefault();
+
+      await deleteWork(work.id);
+      
+      divElement.remove();
+    });
+
+    const deleteIcon = document.createElement("i");
+    deleteIcon.className = "fa-solid fa-trash-can";
+
+    deleteButton.appendChild(deleteIcon);
+    divElement.appendChild(imgElement);
+    divElement.appendChild(deleteButton);
+    galleryPictures.appendChild(divElement);
+  }
+
+  document
+    .querySelector(".add-photo-button")
+    .addEventListener("click", function () {
+      console.log("ADD PHOTO BUTTON");
+    });
+}
+
+document.addEventListener("DOMContentLoaded", async function () {
   // Si l'utilisateur est connecté, affiche la barre de mode édition et le bouton "Modifier"
   if (authToken) {
     const loginLink = document.getElementById("login-link");
@@ -112,7 +171,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       // Déconnexion : supprimer les informations du localStorage
       localStorage.removeItem("authToken");
-      window.location.href = 'index.html';
+      window.location.href = "index.html";
       loginLink.textContent = "Log in";
     });
     console.log("Utilisateur connecté");
@@ -123,76 +182,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Affiche le bouton "Modifier" des projets
     portfolioEdit.classList.add("active");
-    portfolioEdit.addEventListener("click", function (event) {
-      event.preventDefault();
+    portfolioEdit.addEventListener("click", function (e) {
+      e.preventDefault();
       openGalleryModal();
     });
-  }
-
-  async function deleteWork(workId) {
-    console.log(authToken);
-    try {
-      const response = await fetch(
-        `http://localhost:5678/api/works/${workId}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      );
-
-      if (response.ok) {
-        console.log("Work deleted successfully");
-        // Mettre à jour la galerie après la suppression
-        updateWorks();
-      } else {
-        console.error("Failed to delete work");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
-
-  async function openGalleryModal() {
-    const modal = document.getElementById("gallery");
-    const closeButton = document.getElementById("gallery-close");
-    modal.classList.add("active");
-    modal.addEventListener("click", function (event) {
-      if (event.target === modal) {
-        modal.classList.remove("active");
-      }
-    });
-    closeButton.addEventListener("click", function () {
-      modal.classList.remove("active");
-    });
-    const works = await getWorks();
-    const galleryPictures = document.getElementById("gallery-pictures");
-
-    galleryPictures.innerHTML = "";
-
-    for (const work of works) {
-      const divElement = document.createElement("div");
-      const imgElement = document.createElement("img");
-      imgElement.src = work.imageUrl;
-      imgElement.alt = work.title;
-
-      const deleteButton = document.createElement("button");
-      deleteButton.className = "gallery-delete";
-      deleteButton.addEventListener("click", function () {
-        deleteWork(work.id);
-        divElement.remove();
-      });
-
-      const deleteIcon = document.createElement("i");
-      deleteIcon.className = "fa-solid fa-trash-can";
-
-      deleteButton.appendChild(deleteIcon);
-      divElement.appendChild(imgElement);
-      divElement.appendChild(deleteButton);
-      galleryPictures.appendChild(divElement);
-    }
   }
 
   displayCategories();
