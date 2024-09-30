@@ -337,8 +337,6 @@ footer nav ul {
 
 #gallery-modal {
     position: absolute;
-	width: 630px;
-	height: 688px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -358,20 +356,20 @@ footer nav ul {
 }
 
 #gallery-title {
-    margin: 0;
+    margin: 0 auto;
+	font-family: 'Syne';
     font-size: 26px;
     font-weight: 700;
 	color: rgba(0, 0, 0, 1);
 }
 
 #gallery-pictures {
-	margin-top: 30px;
-	margin: 90px;
+	margin: 70px;
     display: grid;
-	float: left;
     grid-template-columns: repeat(5, 1fr);
+	row-gap: 30px;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
 }
 
 #gallery-pictures div {
@@ -440,6 +438,6 @@ footer nav ul {
 hr {
     border: 1px solid #B3B3B3;
 	width: 420px;
-    margin-top: 560px;
+    
 	margin-bottom: 40px;
 }
