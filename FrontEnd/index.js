@@ -1,6 +1,6 @@
 "use strict";
 
-const galleryContainer = document.querySelector(".gallery");
+const galleryContainer = document.querySelector(".portfolio-gallery");
 const categoriesContainer = document.querySelector(".categories");
 const portfolioEdit = document.getElementById("portfolio-edit");
 
@@ -128,7 +128,9 @@ async function openGalleryModal() {
   const works = await getWorks();
   const galleryPictures = document.getElementById("gallery-pictures");
 
-  for (const work of works) {
+  for (let i = 0; i < works.length; i++) {
+    const work = works[i];
+
     const divElement = document.createElement("div");
     const imgElement = document.createElement("img");
     imgElement.src = work.imageUrl;
@@ -141,8 +143,15 @@ async function openGalleryModal() {
       e.preventDefault();
 
       await deleteWork(work.id);
-      
+
       divElement.remove();
+
+      const galleryImages = document.querySelectorAll(".portfolio-gallery img");
+      for (let i = 0; i < galleryImages.length; i++) {
+        if (galleryImages[i].src === work.imageUrl) {
+          galleryImages[i].parentNode.remove();
+        }
+      }
     });
 
     const deleteIcon = document.createElement("i");
