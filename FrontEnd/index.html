@@ -41,6 +41,41 @@
           <button class="add-photo-button" type="button">Ajouter une photo</button>
         </div>
       </div>
+      <div id="add-photo">
+        <div id="add-photo-modal">
+            <div id="add-photo-modal-header">
+                <button id="return-gallery" type="button">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button id="add-photo-close" type="button">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <h2 id="add-photo-title">Ajout photo</h2>
+            </div>
+            <form id="add-photo-form">
+                <div class="add-photo-upload">
+                    <label for="photo-upload" class="photo-upload-label">
+                        <img src="default-image-placeholder.png" alt="Image Placeholder" id="preview-image" />
+                        <button class="upload-button" type="button">+ Ajouter photo</button>
+                        <span>jpg, png : 4mo max</span>
+                    </label>
+                    <input type="file" id="photo-upload" accept="image/png, image/jpeg" style="display:none;" />
+                </div>
+                <div>
+                    <label for="title">Titre</label>
+                    <input type="text" id="title" required />
+                </div>
+                <div>
+                    <label for="category">Catégorie</label>
+                    <select id="category" required>
+                        <!-- Les options doivent être remplies par l'API -->
+                    </select>
+                </div>
+                <hr />
+                <button class="stamp-button" type="submit">Valider</button>
+            </form>
+        </div>
+    </div>
       <section id="introduction">
         <figure>
           <img src="./assets/images/sophie-bluel.png" alt="" />

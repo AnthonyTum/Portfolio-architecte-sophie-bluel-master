@@ -166,8 +166,32 @@ async function openGalleryModal() {
   document
     .querySelector(".add-photo-button")
     .addEventListener("click", function () {
-      console.log("ADD PHOTO BUTTON");
+      openAddPhotoModal();
     });
+}
+
+// Fonction pour ouvrir le modale d'ajout de photo
+function openAddPhotoModal() {
+  const addPhotoModal = document.getElementById("add-photo");
+  const closeAddPhotoModal = document.getElementById("add-photo-close");
+  const returnGallery = document.getElementById("return-gallery");
+
+  addPhotoModal.style.display = "block";
+
+  closeAddPhotoModal.addEventListener("click", function () {
+    addPhotoModal.style.display = "none";
+  });
+
+  returnGallery.addEventListener("click", function () {
+    addPhotoModal.style.display = "none";
+    document.getElementById("gallery").style.display = "block";
+  });
+
+  window.addEventListener("click", function (event) {
+    if (event.target === addPhotoModal) {
+      addPhotoModal.style.display = "none";
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
