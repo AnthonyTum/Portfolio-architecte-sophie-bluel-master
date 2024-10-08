@@ -115,18 +115,22 @@ async function openGalleryModal() {
   console.log(authToken);
   const modal = document.getElementById("gallery");
   const closeButton = document.getElementById("gallery-close");
-  modal.classList.add("active");
+  //modal.classList.add("active");
+  modal.style.display = "block";
   modal.addEventListener("click", function (event) {
     if (event.target === modal) {
-      modal.classList.remove("active");
+      //modal.classList.remove("active");
+      modal.style.display = "none";
     }
   });
   closeButton.addEventListener("click", function () {
-    modal.classList.remove("active");
+    //modal.classList.remove("active");
+    modal.style.display = "none";
   });
 
   const works = await getWorks();
   const galleryPictures = document.getElementById("gallery-pictures");
+  galleryPictures.innerHTML = "";
 
   for (let i = 0; i < works.length; i++) {
     const work = works[i];
@@ -171,15 +175,29 @@ async function openGalleryModal() {
 }
 
 // Fonction pour ouvrir le modale d'ajout de photo
-function openAddPhotoModal() {
+async function openAddPhotoModal() {
   const addPhotoModal = document.getElementById("add-photo");
   const closeAddPhotoModal = document.getElementById("add-photo-close");
   const returnGallery = document.getElementById("return-gallery");
+  const categorySelect = document.getElementById("category");
+  const categories = await getCategories();
+  categorySelect.innerHTML = "";
+
+  for (let i = 0; i < categories.length; i++) {
+    const category = categories[i];
+    const option = document.createElement("option");
+    option.value = category.id;
+    option.textContent = category.name;
+    categorySelect.appendChild(option);
+  }
 
   addPhotoModal.style.display = "block";
+  document.getElementById("gallery").style.display = "none";
 
   closeAddPhotoModal.addEventListener("click", function () {
     addPhotoModal.style.display = "none";
+    document.getElementById("add-photo-form").reset();
+
   });
 
   returnGallery.addEventListener("click", function () {
@@ -190,9 +208,73 @@ function openAddPhotoModal() {
   window.addEventListener("click", function (event) {
     if (event.target === addPhotoModal) {
       addPhotoModal.style.display = "none";
+      document.getElementById("add-photo-form").reset();
+
     }
   });
 }
+
+document.getElementById("photo-upload").addEventListener("change", function () {
+  const file = this.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (event) {
+      document.getElementById("preview-image").src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+document
+  .getElementById("add-photo-form")
+  .addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    // Récupérer les valeurs
+    const title = document.getElementById("title").value;
+    const category = document.getElementById("category").value;
+    const fileInput = document.getElementById("photo-upload");
+    const file = fileInput.files[0];
+    console.log(title, category, file);
+    // Vérifier si tous les champs sont remplis et l'image est sélectionnée
+    if (title && category && file) {
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("category", category);
+      formData.append("image", file);
+      console.log(formData);
+
+      try {
+        console.log(authToken);
+        const response = await fetch("http://localhost:5678/api/works", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+          body: formData,
+        });
+        console.log("avantok");
+
+        if (!response.ok) {
+          throw new Error("Échec de l'ajout de la photo");
+        }
+        console.log(response);
+        // Réinitialiser le formulaire après validation
+        document.getElementById("add-photo-form").reset();
+        document.getElementById("preview-image").src =
+          "default-image-placeholder.png";
+
+        alert("Photo ajoutée avec succès!");
+        document.getElementById("add-photo").style.display = "none";
+        document.getElementById("gallery").style.display = "block";
+      } catch (error) {
+        console.error("Erreur:", error);
+        alert("Erreur lors de l'ajout de la photo.");
+      }
+    } else {
+      alert("Tous les champs doivent être remplis.");
+    }
+  });
 
 document.addEventListener("DOMContentLoaded", async function () {
   // Si l'utilisateur est connecté, affiche la barre de mode édition et le bouton "Modifier"

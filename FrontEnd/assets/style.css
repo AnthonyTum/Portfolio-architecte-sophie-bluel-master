@@ -327,7 +327,7 @@ footer nav ul {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.3);
     z-index: 999;
 }
 
@@ -447,26 +447,24 @@ hr {
 /* Add Photo */
 
 #add-photo {
-    display: none; /* Will be shown when active */
+    display: none;
     position: fixed;
     top: 0;
+    bottom: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 100;
-    justify-content: center;
-    align-items: center;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 999;
 }
 
 #add-photo-modal {
-    background: white;
-    padding: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
     border-radius: 10px;
-    max-width: 400px;
-    width: 100%;
-    position: relative;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
 #add-photo-modal-header {
@@ -476,9 +474,12 @@ hr {
 }
 
 #add-photo-title {
-    text-align: center;
-    font-size: 1.5rem;
-    flex: 1;
+    margin: 0 auto;
+	margin-top: 50px;
+	font-family: 'Syne';
+    font-size: 26px;
+    font-weight: 700;
+	color: rgba(0, 0, 0, 1);
 }
 
 #add-photo-modal-header button {
@@ -518,11 +519,13 @@ hr {
 }
 
 input, select {
-    width: 100%;
+    width: 70%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+	align-items: center;
+	justify-content: center;
 }
 
 .stamp-button {
