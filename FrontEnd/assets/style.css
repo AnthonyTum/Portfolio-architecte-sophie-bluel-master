@@ -218,7 +218,7 @@ li:hover {
 
 #portfolio-edit {
 	display: none;
-	color: #1D6154;
+	color: black;
 	font-weight: 700;
 	background-color: transparent;
 	border: none;
@@ -238,6 +238,7 @@ li:hover {
 	text-align: center;
 }
 .categories {
+	margin: 50px;
 	display: flex;
 	justify-content: center;
 	gap: 20px;
@@ -342,7 +343,9 @@ footer nav ul {
     transform: translate(-50%, -50%);
     background-color: white;
     border-radius: 10px;
-    padding: 20px;
+    padding: 50px;
+	width: 630px;
+	height: 688px;
 }
 
 #gallery-modal-header {
@@ -357,7 +360,7 @@ footer nav ul {
 
 #gallery-title {
     margin: 0 auto;
-	margin-top: 50px;
+	margin-top: 20px;
 	font-family: 'Syne';
     font-size: 26px;
     font-weight: 700;
@@ -366,11 +369,10 @@ footer nav ul {
 
 #gallery-pictures {
 	margin: 50px;
-    display: grid;
+    display: inline-grid;
     grid-template-columns: repeat(5, 1fr);
 	row-gap: 30px;
     column-gap: 10px;
-    margin-bottom: 80px;
 }
 
 #gallery-pictures div {
@@ -392,15 +394,17 @@ footer nav ul {
 }
 
 #gallery-close  i {
-	margin-top: 8px;
-	margin-right: 15px;
-    font-size: 24px;
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	left: 620px;
+	top: 30px;
 }
 
 .gallery-delete {
     position: absolute;
     top: 5px;
-   	left: 52px;
+   	left: 56px;
     background-color: rgba(0, 0, 0, 0.8);
     border: none;
     color: white;
@@ -408,15 +412,14 @@ footer nav ul {
     cursor: pointer;
 	width: 17px;
 	height: 17px;
-	padding: 3px;
 }
 
 .gallery-delete i {
-    pointer-events: none;
-	width: 9px;
-	height: 11px;
-	justify-content: center;
-	align-items: center;
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	left: 1px;
+	top: 3px;
 }
 
 .add-photo-button {
@@ -464,7 +467,9 @@ hr {
     transform: translate(-50%, -50%);
     background-color: white;
     border-radius: 10px;
-    padding: 20px;
+    padding: 50px;
+	width: 630px;
+	height: 688px;
 }
 
 #add-photo-modal-header {
@@ -501,10 +506,10 @@ hr {
 }
 
 .photo-upload-label img {
-    width: 100px;
-    height: 100px;
-    background-color: #f0f0f0;
-    border-radius: 10px;
+    width: 76px;
+    height: 76px;
+    background-color: rgba(232,241,246,1);
+    border-radius: 3px;
     margin-bottom: 10px;
 }
 
@@ -514,7 +519,7 @@ hr {
     padding: 10px;
     font-size: 1rem;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 50px;
     margin-bottom: 5px;
 }
 
