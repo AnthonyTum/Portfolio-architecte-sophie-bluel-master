@@ -160,8 +160,8 @@ button[type="submit"] {
 	border-radius: 60px ;
 	padding: 7px 25px 7px 25px;
 	width: 150px;
-	margin-top: 30px;
-	margin-left: 43%;
+	display: block;
+	margin: 30px auto;
 	cursor: pointer;
 }
 
@@ -369,10 +369,12 @@ footer nav ul {
 
 #gallery-pictures {
 	margin: 50px;
-    display: inline-grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: grid;
+    grid-template-columns: repeat(5, 76px);
 	row-gap: 30px;
     column-gap: 10px;
+	overflow-y: auto;
+	justify-content: center;
 }
 
 #gallery-pictures div {
@@ -381,9 +383,11 @@ footer nav ul {
 }
 
 #gallery-pictures img {
-	width: 76.86px;
+	width: 100%;
     height: 102.57px;
 	object-fit: cover;
+	display: block;
+	max-width: 100%;
 }
 
 #gallery-close {
@@ -391,14 +395,13 @@ footer nav ul {
     border: none;
     color: black;
     cursor: pointer;
+	position: absolute;
+	right: 30px;
+	top: 30px;
 }
 
 #gallery-close  i {
-	position: absolute;
-	width: 150px;
-	height: 150px;
-	left: 620px;
-	top: 30px;
+	font-size: 24px;	
 }
 
 .gallery-delete {
@@ -433,6 +436,7 @@ footer nav ul {
 	display: block;
 	margin: 0 auto;
 	margin-bottom: 20px;
+	font-size: 1rem;
 }
 
 .add-photo-button:hover {
@@ -473,14 +477,22 @@ hr {
 }
 
 #add-photo-modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    
+}
+
+.add-photo-modal-header-buttons {
+	
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#return-gallery, #add-photo-close {
+	font-size: 24px;
 }
 
 #add-photo-title {
-    margin: 0 auto;
-	margin-top: 50px;
+	text-align: center;
 	font-family: 'Syne';
     font-size: 26px;
     font-weight: 700;
@@ -523,14 +535,21 @@ hr {
     margin-bottom: 5px;
 }
 
+.label-title, .label-category {
+	font-family: 'Syne';
+	font-size: 16px;
+	font-weight: 700;
+	color: #333333;
+	margin-bottom: 5px;
+}
+
 input, select {
     width: 70%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-	align-items: center;
-	justify-content: center;
+    border: none;
+	box-shadow: 0px 0px 15px rgba(0,0,0,0.09);
+	left: 50%;
 }
 
 .stamp-button {

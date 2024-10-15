@@ -177,6 +177,7 @@ async function openGalleryModal() {
 // Fonction pour ouvrir le modale d'ajout de photo
 async function openAddPhotoModal() {
   const addPhotoModal = document.getElementById("add-photo");
+  const uploadButton = document.querySelector(".upload-button");
   const closeAddPhotoModal = document.getElementById("add-photo-close");
   const returnGallery = document.getElementById("return-gallery");
   const categorySelect = document.getElementById("category");
@@ -198,6 +199,10 @@ async function openAddPhotoModal() {
     addPhotoModal.style.display = "none";
     document.getElementById("add-photo-form").reset();
 
+  });
+
+  uploadButton.addEventListener("click", function () {
+    document.querySelector(".photo-upload-label").click();
   });
 
   returnGallery.addEventListener("click", function () {
@@ -289,6 +294,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       window.location.href = "index.html";
       loginLink.textContent = "Log in";
     });
+    categoriesContainer.style.display = "none";
     console.log("Utilisateur connecté");
     const editMode = document.getElementById("edit-mode");
 

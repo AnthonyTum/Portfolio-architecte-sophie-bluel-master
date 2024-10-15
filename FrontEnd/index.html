@@ -10,13 +10,18 @@
       href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
     <header>
-      <div id="edit-mode"><i class="fa-regular fa-pen-to-square"></i> Mode édition</div>
+      <div id="edit-mode">
+        <i class="fa-regular fa-pen-to-square"></i> Mode édition
+      </div>
       <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
       <nav>
         <ul>
@@ -31,51 +36,66 @@
       <div id="gallery">
         <div id="gallery-modal">
           <div id="gallery-modal-header">
-            <button id="gallery-close" type="button"><i class="fa-solid fa-xmark"></i></button>
+            <button id="gallery-close" type="button">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
             <h2 id="gallery-title">Galerie photo</h2>
           </div>
-          <div id="gallery-pictures">
-            
-          </div>
-          <hr/>
-          <button class="add-photo-button" type="button">Ajouter une photo</button>
+          <div id="gallery-pictures"></div>
+          <hr />
+          <button class="add-photo-button" type="button">
+            Ajouter une photo
+          </button>
         </div>
       </div>
       <div id="add-photo">
         <div id="add-photo-modal">
-            <div id="add-photo-modal-header">
-                <button id="return-gallery" type="button">
-                    <i class="fa-solid fa-arrow-left"></i>
-                </button>
-                <button id="add-photo-close" type="button">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-                <h2 id="add-photo-title">Ajout photo</h2>
+          <div id="add-photo-modal-header">
+            <div class="add-photo-modal-header-buttons">
+              <button id="return-gallery" type="button">
+                <i class="fa-solid fa-arrow-left"></i>
+              </button>
+              <button id="add-photo-close" type="button">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
             </div>
-            <form id="add-photo-form">
-                <div class="add-photo-upload">
-                    <label for="photo-upload" class="photo-upload-label">
-                        <img src="./assets/icons/picture-svgrepo-com 1.png" alt="Image Placeholder" id="preview-image" />
-                        <button class="upload-button" type="button">+ Ajouter photo</button>
-                        <span>jpg, png : 4mo max</span>
-                    </label>
-                    <input type="file" id="photo-upload" accept="image/png, image/jpeg" style="display:none;" />
-                </div>
-                <div>
-                    <label for="title">Titre</label>
-                    <input type="text" id="title" required />
-                </div>
-                <div>
-                    <label for="category">Catégorie</label>
-                    <select id="category" required>
-                        <!-- Les options sont remplies par l'API -->
-                    </select>
-                </div>
-                <hr />
-                <button class="stamp-button" type="submit">Valider</button>
-            </form>
+            <h2 id="add-photo-title">Ajout photo</h2>
+          </div>
+          <form id="add-photo-form">
+            <div class="add-photo-upload">
+              <label for="photo-upload" class="photo-upload-label">
+                <img
+                  src="./assets/icons/picture-svgrepo-com 1.png"
+                  alt="Image Placeholder"
+                  id="preview-image"
+                />
+                <button class="upload-button" type="button">
+                  + Ajouter photo
+                </button>
+                <span>jpg, png : 4mo max</span>
+              </label>
+              <input
+                type="file"
+                id="photo-upload"
+                accept="image/png, image/jpeg"
+                style="display: none"
+              />
+            </div>
+            <div>
+              <label class="label-title" for="title">Titre</label>
+              <input type="text" id="title" required />
+            </div>
+            <div>
+              <label class="label-category" for="category">Catégorie</label>
+              <select id="category" required>
+                <!-- Les options sont remplies par l'API -->
+              </select>
+            </div>
+            <hr />
+            <button class="stamp-button" type="submit">Valider</button>
+          </form>
         </div>
-    </div>
+      </div>
       <section id="introduction">
         <figure>
           <img src="./assets/images/sophie-bluel.png" alt="" />
@@ -101,13 +121,13 @@
       </section>
       <section id="portfolio">
         <div class="portfolio-header">
-        <h2>Mes Projets</h2>
-        <button id="portfolio-edit" type="button"><i class="fa-regular fa-pen-to-square"></i> Modifier</button>
-      </div>
-        <div class="categories">
+          <h2>Mes Projets</h2>
+          <button id="portfolio-edit" type="button">
+            <i class="fa-regular fa-pen-to-square"></i> Modifier
+          </button>
         </div>
-        <div class="portfolio-gallery">
-        </div>
+        <div class="categories"></div>
+        <div class="portfolio-gallery"></div>
       </section>
       <section id="contact">
         <h2>Contact</h2>
