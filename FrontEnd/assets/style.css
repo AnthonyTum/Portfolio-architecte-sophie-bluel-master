@@ -445,9 +445,11 @@ footer nav ul {
 }
 
 hr {
-    border: 1px solid #B3B3B3;
-	width: 420px;
-	margin-bottom: 40px;
+width: 420px;
+height: 0px;
+
+border: 1px solid #B3B3B3;
+
 }
 
 
@@ -494,9 +496,9 @@ hr {
 #add-photo-title {
 	text-align: center;
 	font-family: 'Syne';
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 700;
-	color: rgba(0, 0, 0, 1);
+	color: rgba(0, 0, 0, 0.8);
 }
 
 #add-photo-modal-header button {
@@ -506,6 +508,8 @@ hr {
 }
 
 .add-photo-upload {
+	display: grid;
+	justify-content: center;
     text-align: center;
     margin: 20px 0;
 }
@@ -514,53 +518,99 @@ hr {
     display: grid;
 	justify-items: center;
     cursor: pointer;
+	border-radius: 3px;
+	width: 420px;
+	height: 169px;
 	background-color: rgba(232,241,246,1);
 }
 
 .photo-upload-label img {
-    width: 76px;
-    height: 76px;
-    margin-bottom: 10px;
-	background-size: 420px 169px;
+	max-width: 420px;
+	max-height: 169px;
+	display: block;
 }
 
 .upload-button {
-    background-color: #e6e6e6;
+    background-color: rgba(203,214,220,1);
     border: none;
-    padding: 10px;
-    font-size: 1rem;
+	width: 173px;
+	height: 36px;
     cursor: pointer;
     border-radius: 50px;
-    margin-bottom: 5px;
+    color: rgba(48,102,133,1);
+    font-weight: bold;
 }
 
-.label-title, .label-category {
-	font-family: 'Syne';
-	font-size: 16px;
+.label-title {
+	width: 32px;
+
+
+	font-family: 'Work Sans';
+	font-style: normal;
 	font-weight: 700;
-	color: #333333;
-	margin-bottom: 5px;
+	font-size: 14px;
+	line-height: 16px;
+
+	color: #3d3d3d;
 }
 
-input, select {
-    width: 70%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-	box-shadow: 0px 0px 15px rgba(0,0,0,0.09);
-	left: 50%;
+.add-photo-form-container {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: 420px;
+	justify-content: center;
+	margin: 0 auto;
 }
 
-.stamp-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #888;
+.add-photo-form-fields {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	justify-content: center;
+}
+
+.label-category {
+	width: 65px;
+	height: 16px;
+
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 16px;
+
+	color: #3D3D3D;
+}
+
+#title {
+	height: 51px;
+
+	background: #FFFFFF;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+#category {
+	height: 51px;
+
+
+	background: #FFFFFF;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.stamp-button[type="submit"] {
+    width: 237px;
+    background-color: rgba(167, 167, 167, 1);
     color: white;
     border: none;
-    border-radius: 5px;
+	display: block;
+	margin: 30px auto;
+    border-radius: 60px;
     cursor: pointer;
 }
 
-.stamp-button:hover {
+.stamp-button[type="submit"]:hover {
     background-color: #555;
 }

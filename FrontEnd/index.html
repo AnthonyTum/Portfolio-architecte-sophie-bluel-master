@@ -72,24 +72,27 @@
                 <button class="upload-button" type="button">
                   + Ajouter photo
                 </button>
-                <span>jpg, png : 4mo max</span>
+                <span class="upload-format">jpg, png : 4mo max</span>
               </label>
               <input
                 type="file"
                 id="photo-upload"
                 accept="image/png, image/jpeg"
                 style="display: none"
-              />
-            </div>
-            <div>
-              <label class="label-title" for="title">Titre</label>
-              <input type="text" id="title" required />
-            </div>
-            <div>
-              <label class="label-category" for="category">Catégorie</label>
-              <select id="category" required>
-                <!-- Les options sont remplies par l'API -->
-              </select>
+                />
+              </div>
+              <div class="add-photo-form-container">
+
+                <div class="add-photo-form-fields">
+                  <label class="label-title" for="title">Titre</label>
+                  <input type="text" id="title" required />
+                </div>
+                <div class="add-photo-form-fields">
+                  <label class="label-category" for="category">Catégorie</label>
+                  <select id="category" required>
+                    <!-- Les options sont remplies par l'API -->
+                  </select>
+                </div>
             </div>
             <hr />
             <button class="stamp-button" type="submit">Valider</button>
