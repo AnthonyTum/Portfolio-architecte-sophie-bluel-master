@@ -77,6 +77,7 @@ async function updateWorks() {
 }
 
 async function displayWorks() {
+  galleryContainer.innerHTML = "";
   const works = await getWorks();
 
   // Parcourir les works
@@ -128,6 +129,28 @@ async function openGalleryModal() {
     modal.style.display = "none";
   });
 
+  displayGalleryModal();
+
+  document
+    .querySelector(".add-photo-button")
+    .addEventListener("click", function () {
+      openAddPhotoModal();
+    });
+  }
+  const addPhotoForm = document.getElementById("add-photo-form")
+  const addPhotoModal = document.getElementById("add-photo");
+  const uploadButton = document.querySelector(".upload-button");
+  
+  function closeAddPhotoModal() {
+    addPhotoModal.style.display = "none";
+        document.getElementById("preview-image").src = "./assets/icons/picture-svgrepo-com 1.png";
+        uploadButton.style.display = "block";
+        uploadFormat.style.display = "block";
+        addPhotoForm.reset();
+
+  
+  }
+async function displayGalleryModal() {
   const works = await getWorks();
   const galleryPictures = document.getElementById("gallery-pictures");
   galleryPictures.innerHTML = "";
@@ -166,27 +189,7 @@ async function openGalleryModal() {
     divElement.appendChild(deleteButton);
     galleryPictures.appendChild(divElement);
   }
-
-  document
-    .querySelector(".add-photo-button")
-    .addEventListener("click", function () {
-      openAddPhotoModal();
-    });
-  }
-  const addPhotoForm = document.getElementById("add-photo-form")
-  const addPhotoModal = document.getElementById("add-photo");
-  const uploadButton = document.querySelector(".upload-button");
-  
-  function closeAddPhotoModal() {
-    addPhotoModal.style.display = "none";
-        document.getElementById("preview-image").src = "./assets/icons/picture-svgrepo-com 1.png";
-        uploadButton.style.display = "block";
-        uploadFormat.style.display = "block";
-        addPhotoForm.reset();
-
-  
-  }
-
+}
 // Fonction pour ouvrir le modale d'ajout de photo
 async function openAddPhotoModal() {
   const closeAddPhotoModalButton = document.getElementById("add-photo-close");
@@ -247,8 +250,21 @@ document.getElementById("photo-upload").addEventListener("change", function () {
   }
 });
 
-document
-  .getElementById("add-photo-form")
+addPhotoForm.addEventListener("input", function () {
+  const title = document.getElementById("title").value;
+  const category = document.getElementById("category").value;
+  const fileInput = document.getElementById("photo-upload");
+  const file = fileInput.files[0];
+  const validateButton = document.querySelector(".stamp-button");
+
+  console.log(title, category, file);
+  if (title && category && file) {
+    validateButton.disabled = false;
+  } else {
+    validateButton.disabled = true;
+  }
+});
+addPhotoForm
   .addEventListener("submit", async function (e) {
     e.preventDefault();
 
@@ -289,6 +305,8 @@ document
         alert("Photo ajoutée avec succès!");
         document.getElementById("add-photo").style.display = "none";
         document.getElementById("gallery").style.display = "block";
+        displayWorks();
+        displayGalleryModal();
       } catch (error) {
         console.error("Erreur:", error);
         alert("Erreur lors de l'ajout de la photo.");
@@ -296,6 +314,9 @@ document
     } else {
       alert("Tous les champs doivent être remplis.");
     }
+
+
+    
   });
 
 document.addEventListener("DOMContentLoaded", async function () {

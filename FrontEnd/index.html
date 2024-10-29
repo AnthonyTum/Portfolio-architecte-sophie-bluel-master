@@ -65,13 +65,13 @@
             <div class="add-photo-upload">
               <label for="photo-upload" class="photo-upload-label">
                 <img
-                  src="./assets/icons/picture-svgrepo-com 1.png"
+                  src="./assets/icons/picture-svgrepo-com1.png"
                   alt="Image Placeholder"
                   id="preview-image"
                 />
-                <button class="upload-button" type="button">
+                <span class="upload-button">
                   + Ajouter photo
-                </button>
+                </span>
                 <span class="upload-format">jpg, png : 4mo max</span>
               </label>
               <input
@@ -85,11 +85,11 @@
 
                 <div class="add-photo-form-fields">
                   <label class="label-title" for="title">Titre</label>
-                  <input type="text" id="title" required />
+                  <input type="text" id="title" />
                 </div>
                 <div class="add-photo-form-fields">
                   <label class="label-category" for="category">Catégorie</label>
-                  <select id="category" required>
+                  <select id="category" >
                     <!-- Les options sont remplies par l'API -->
                   </select>
                 </div>
